@@ -51,7 +51,7 @@ namespace MagicPurse
 				var newList = coins.ToList();
 				var selectedCoin = newList.Find(sc => sc.Splittable && sc.Type == coin.Type);
 				newList.Remove(selectedCoin);
-				coinExchange.ExchangeCoins()
+                coinExchange.ExchangeCoins();
 				var coinToSplit = newList.Find(c => c.Type == coin.Type);
 			});
 
