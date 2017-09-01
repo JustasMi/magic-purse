@@ -1,9 +1,8 @@
-﻿using MagicPurse.Models;
+﻿using MagicPurse.Extensions;
+using MagicPurse.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicPurse
 {
@@ -16,8 +15,11 @@ namespace MagicPurse
 		{
 			this.coinPurse = coinPurse;
 			this.coinExchange = new CoinExchange();
+			var results = new CoinChangeAnswer();
+			this.RunAlgorithm("", 0, 6, results);
 		}
 
+		/*
 		public int GetCombinations()
 		{
 			var coins = coinPurse.coins.Select(pair => new Coin()
@@ -26,37 +28,43 @@ namespace MagicPurse
 				Splittable = pair.Key != CoinType.Halfpenny,
 				Type = pair.Key
 			});
-			Calculate(coins);
-			return 0;
+			int combinations = 0;
+			Calculate(coins, ref combinations);
+			return combinations;
+		}
+		*/
+
+		public class CoinChangeAnswer
+		{
+			public int[] denoms = { 1, 2, 6, 12, 24, 48, 60 };
+			public List<string> allPossibleChanges = new List<string>();
 		}
 
-		private int Calculate(IEnumerable<Coin> coins)
+		public void RunAlgorithm(string currentSolution, int index, int remainingTarget, CoinChangeAnswer answer)
 		{
-			var coinSum = coins.Sum(coin => coin.Amount);
-			if (coinSum % 2 == 0 && coinSum != 0)
+			for (int i = index; i < answer.denoms.Length; i++)
 			{
-				Console.WriteLine("Possible to share!" + coinSum);
+				int temp = remainingTarget - answer.denoms[i];
+				String tempSoln = currentSolution + "" + answer.denoms[i] + ",";
+
+				if (temp < 0)
+				{
+					break;
+				}
+
+				if (temp == 0)
+				{
+					// reached the answer hence quit from the loop
+					answer.allPossibleChanges.Add(tempSoln);
+					break;
+				}
+				else
+				{
+					// target not reached, try the solution recursively with the
+					// current denomination as the start point.
+					RunAlgorithm(tempSoln, i, temp, answer);
+				}
 			}
-
-			var splittable = coins.Count(coin => coin.Splittable);
-			if (splittable == 0)
-			{
-				return 0;
-			}
-
-			// continue search
-			bool multiplePaths = splittable > 1;
-			coins.Where(coin => coin.Splittable).ToList().ForEach(coin =>
-			{
-				var newList = coins.ToList();
-				var selectedCoin = newList.Find(sc => sc.Splittable && sc.Type == coin.Type);
-				newList.Remove(selectedCoin);
-                coinExchange.ExchangeCoins();
-				var coinToSplit = newList.Find(c => c.Type == coin.Type);
-			});
-
-			//coins.coins[0]
-			return 0;
 		}
 	}
 }

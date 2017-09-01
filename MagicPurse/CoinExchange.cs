@@ -35,5 +35,12 @@ namespace MagicPurse
 				Type = targetType
 			};
 		}
+
+		public Coin SplitCoin(Coin givenCoin)
+		{
+			return new Coin()
+			{
+			};
+		}
 	}
 }

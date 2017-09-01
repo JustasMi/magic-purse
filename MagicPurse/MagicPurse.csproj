@@ -45,6 +45,7 @@
     <Compile Include="Algorithm.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="CoinExchange.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Models\Coin.cs" />
     <Compile Include="Models\CoinPurse.cs" />
