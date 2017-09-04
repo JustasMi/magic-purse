@@ -1,6 +1,7 @@
 ﻿using MagicPurse.Extensions;
 using MagicPurse.Models;
 using System;
+using System.Collections.Generic;
 
 namespace MagicPurse
 {
@@ -8,16 +9,16 @@ namespace MagicPurse
 	{
 		public static void Run()
 		{
-			/*
-			Console.WriteLine("Please enter currency for the calculation");
+			VariationCalculator variationCalculator = new VariationCalculator();
+			PossibilityCalculator posssibilityCalculator = new PossibilityCalculator();
+
+			Console.WriteLine("Please enter amount of old British currency for magic purse calculation");
 			string input = Console.ReadLine();
-			Wallet wallet = input.ParseMoney();
-			CoinPurse coinPurse = new CoinPurse();
-			coinPurse.Initialise(wallet.GetTotalPence());
-			Console.WriteLine(input);
+			Money money = input.ParseMoney();
+			List<List<int>> variations = variationCalculator.Calculate(money);
+			long finalResult = posssibilityCalculator.CalculatePossibilities(variations);
+			Console.WriteLine($"Grandmother can divide the money between two children in {finalResult} ways");
 			Console.ReadKey();
-			*/
-			var algorithm = new Algorithm(new CoinPurse());
 		}
 	}
 }

@@ -42,7 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithm.cs" />
+    <Compile Include="PossibilityCalculator.cs" />
+    <Compile Include="VariationCalculator.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="CoinExchange.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
@@ -50,7 +51,7 @@
     <Compile Include="Models\Coin.cs" />
     <Compile Include="Models\CoinPurse.cs" />
     <Compile Include="Models\CoinType.cs" />
-    <Compile Include="Models\Wallet.cs" />
+    <Compile Include="Models\Money.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
