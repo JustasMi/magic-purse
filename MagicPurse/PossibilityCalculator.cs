@@ -1,38 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using MagicPurse.Interfaces;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MagicPurse
 {
-	public class PossibilityCalculator
+	public class PossibilityCalculator : IPossibilityCalculator
 	{
-		public PossibilityCalculator()
-		{
-		}
-
-		public long CalculatePossibilities(List<List<int>> variations)
+		public long Calculate(List<List<double>> combinations)
 		{
 			long count = 0;
 
-			variations.ForEach(item =>
+			combinations.ForEach(item =>
 			{
-				if (item.Count % 2 == 0)
-				{
-					DoStuff(item, 0, item.Distinct().ToArray(), 0, ref count);
-				}
+				CalculatePossibilities(item, 0, item.Distinct().ToArray(), 0, ref count);
 			});
 			return count;
 		}
 
-		private void DoStuff(List<int> variation, int denominationIndex, int[] denominations, int coinAmount, ref long result)
+		private void CalculatePossibilities(List<double> variation, int denominationIndex, double[] denominations, int currentCointCount, ref long result)
 		{
-			// Check if no more denominations left, and check validity of path
+			// Check if this is the last denomination
+			int requiredCoinCount = variation.Count() / 2;
 			if (denominationIndex + 1 == denominations.Count())
 			{
-				// check how many coins are needed
-				var requiredCoins = variation.Count() / 2;
-				// check if we have enough coins
-				bool goodPath = (requiredCoins - coinAmount) <= variation.Where(item => item == denominations[denominationIndex]).Count();
-				if (goodPath)
+				// TODO: Using dictionary would be more efficient instead of list
+				bool isEnoughCoins = (requiredCoinCount - currentCointCount) <= variation.Where(item => item == denominations[denominationIndex]).Count();
+				if (isEnoughCoins)
 				{
 					result += 1;
 				}
@@ -43,17 +36,15 @@ namespace MagicPurse
 					.Where(item => item == denominations[denominationIndex])
 					.Count();
 
-				int maxCoins = variation.Count() / 2;
-				// if there is enough coins dont look further
-				if (coinAmount == maxCoins)
+				if (currentCointCount == requiredCoinCount)
 				{
 					result += 1;
 				}
 				else
 				{
-					for (int i = 0; i <= totalCoins && i + coinAmount <= maxCoins; i++)
+					for (int i = 0; i <= totalCoins && i + currentCointCount <= requiredCoinCount; i++)
 					{
-						DoStuff(variation, denominationIndex + 1, denominations, coinAmount + i, ref result);
+						CalculatePossibilities(variation, denominationIndex + 1, denominations, currentCointCount + i, ref result);
 					}
 				}
 			}

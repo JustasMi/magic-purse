@@ -1,19 +1,19 @@
-﻿namespace MagicPurse.Models
+﻿namespace MagicPurse
 {
 	public class Money
 	{
-		private int Pound { get; set; }
-		private int Penny { get; set; }
-		private int Shilling { get; set; }
+		public int Pound { get; private set; }
+		public int Pence { get; private set; }
+		public int Shilling { get; private set; }
 
 		public Money()
 		{
 		}
 
-		public Money(int pound, int shilling, int penny)
+		public Money(int pound, int shilling, int pence)
 		{
 			this.Pound = pound;
-			this.Penny = penny;
+			this.Pence = pence;
 			this.Shilling = shilling;
 		}
 
@@ -25,7 +25,7 @@
 
 		public Money AddPence(int amount)
 		{
-			this.Penny += amount;
+			this.Pence += amount;
 			return this;
 		}
 
@@ -37,8 +37,7 @@
 
 		public int GetTotalPence()
 		{
-			// change this?
-			return Pound * 20 * 12 + Shilling * 12 + Penny;
+			return Pound * 20 * 12 + Shilling * 12 + Pence;
 		}
 	}
 }
