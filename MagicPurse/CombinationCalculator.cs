@@ -16,10 +16,10 @@ namespace MagicPurse
 				.ToArray();
 		}
 
-		public List<List<double>> Calculate(Money money)
+		public List<List<double>> Calculate(Currency currency)
 		{
 			List<List<double>> result = new List<List<double>>();
-			this.RunAlgorithm(new List<double>(), 0, money.GetTotalPence(), result);
+			this.RunAlgorithm(new List<double>(), 0, currency.GetTotalPence(), result);
 			return result;
 		}
 

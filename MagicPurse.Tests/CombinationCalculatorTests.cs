@@ -17,24 +17,24 @@ namespace MagicPurse.Tests
 		[Test(Description = "Calculate even coin count combinations for 3 pence")]
 		public void TestCombinationsForThreePence()
 		{
-			Money money = new Money().AddPence(3);
-			var result = combinationCalculator.Calculate(money);
+			Currency currency = new Currency().AddPence(3);
+			var result = combinationCalculator.Calculate(currency);
 			Assert.AreEqual(2, result.Count);
 		}
 
 		[Test(Description = "Calculate even coin count combinations for 6 pence")]
 		public void TestCombinationsForSixPence()
 		{
-			Money money = new Money().AddPence(6);
-			var result = combinationCalculator.Calculate(money);
+			Currency currency = new Currency().AddPence(6);
+			var result = combinationCalculator.Calculate(currency);
 			Assert.AreEqual(7, result.Count);
 		}
 
 		[Test(Description = "Calculate even coin count combinations for 1 shilling")]
 		public void TestCombinationsForOneShilling()
 		{
-			Money money = new Money().AddShiling(1);
-			var result = combinationCalculator.Calculate(money);
+			Currency currency = new Currency().AddShiling(1);
+			var result = combinationCalculator.Calculate(currency);
 			Assert.AreEqual(25, result.Count);
 		}
 	}

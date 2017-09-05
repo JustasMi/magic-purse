@@ -8,33 +8,33 @@ namespace MagicPurse
 	{
 		private readonly ICombinationCalculator combinationCalculator;
 		private readonly IPossibilityCalculator possibilityCalculator;
-		private readonly IMoneyFactory moneyFactory;
+		private readonly ICurrencyFactory currencyFactory;
 
 		public Application(
 			ICombinationCalculator combinationCalculator,
 			IPossibilityCalculator possibilityCalculator,
-			IMoneyFactory moneyFactory)
+			ICurrencyFactory currencyFactory)
 		{
 			this.combinationCalculator = combinationCalculator;
 			this.possibilityCalculator = possibilityCalculator;
-			this.moneyFactory = moneyFactory;
+			this.currencyFactory = currencyFactory;
 		}
 
 		public void Run()
 		{
 			try
 			{
-				Console.WriteLine("Please enter amount of old British currency for magic purse calculation");
+				Console.WriteLine("Please enter pre-decimalisation British currency");
 				string input = Console.ReadLine();
-				Money money = moneyFactory.Build(input);
-				List<List<double>> combinations = combinationCalculator.Calculate(money);
+				Currency currency = currencyFactory.Build(input);
+				List<List<double>> combinations = combinationCalculator.Calculate(currency);
 				long possibilityCount = possibilityCalculator.Calculate(combinations);
-				Console.WriteLine($"Grandmother can divide the money between two children in {possibilityCount} ways");
+				Console.WriteLine($"Grandmother can divide the money between two children in { possibilityCount } ways");
 				Console.ReadKey();
 			}
 			catch (ArgumentException exception)
 			{
-				Console.WriteLine($"Invalid argument: { exception.Message}");
+				Console.WriteLine($"Invalid argument: { exception.Message }");
 				Console.ReadKey();
 			}
 		}

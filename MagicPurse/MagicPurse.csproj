@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyResolution\ApplicationModule.cs" />
-    <Compile Include="Factories\MoneyFactory.cs" />
+    <Compile Include="Factories\CurrencyFactory.cs" />
     <Compile Include="Interfaces\IApplication.cs" />
     <Compile Include="Interfaces\ICoinSettings.cs" />
     <Compile Include="Interfaces\IMoneyFactory.cs" />
@@ -58,7 +58,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Models\CoinSettings.cs" />
     <Compile Include="Models\CoinType.cs" />
-    <Compile Include="Money.cs" />
+    <Compile Include="Currency.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

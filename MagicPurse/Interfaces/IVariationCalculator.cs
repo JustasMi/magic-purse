@@ -4,6 +4,6 @@ namespace MagicPurse.Interfaces
 {
 	public interface ICombinationCalculator
 	{
-		List<List<double>> Calculate(Money money);
+		List<List<double>> Calculate(Currency currency);
 	}
 }

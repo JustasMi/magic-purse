@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace MagicPurse.Factories
 {
-	public class MoneyFactory : IMoneyFactory
+	public class CurrencyFactory : ICurrencyFactory
 	{
-		public Money Build(string money)
+		public Currency Build(string money)
 		{
 			string[] collection = money.Split('/');
 
@@ -25,7 +25,7 @@ namespace MagicPurse.Factories
 				throw new ArgumentException("money");
 			}
 
-			Money result = new Money();
+			Currency result = new Currency();
 			if (moneyCollection.Length == 1)
 			{
 				result.AddPence(moneyCollection[0]);

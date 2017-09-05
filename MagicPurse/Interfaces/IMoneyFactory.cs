@@ -1,7 +1,7 @@
 ﻿namespace MagicPurse.Interfaces
 {
-	public interface IMoneyFactory
+	public interface ICurrencyFactory
 	{
-		Money Build(string money);
+		Currency Build(string currency);
 	}
 }

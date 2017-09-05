@@ -19,11 +19,11 @@ namespace MagicPurse
 
 		private void CalculatePossibilities(List<double> variation, int denominationIndex, double[] denominations, int currentCointCount, ref long result)
 		{
-			// Check if this is the last denomination
+			// Divided by two because we only need to figure out a combination for one person, the other gets the rest
 			int requiredCoinCount = variation.Count() / 2;
+			// Check if this is the last denomination
 			if (denominationIndex + 1 == denominations.Count())
 			{
-				// TODO: Using dictionary would be more efficient instead of list
 				bool isEnoughCoins = (requiredCoinCount - currentCointCount) <= variation.Where(item => item == denominations[denominationIndex]).Count();
 				if (isEnoughCoins)
 				{

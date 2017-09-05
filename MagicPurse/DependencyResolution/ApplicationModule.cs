@@ -13,7 +13,7 @@ namespace MagicPurse.DependencyResolution
 			builder.RegisterType<CoinSettings>().As<ICoinSettings>();
 			builder.RegisterType<CombinationCalculator>().As<ICombinationCalculator>();
 			builder.RegisterType<PossibilityCalculator>().As<IPossibilityCalculator>();
-			builder.RegisterType<MoneyFactory>().As<IMoneyFactory>();
+			builder.RegisterType<CurrencyFactory>().As<ICurrencyFactory>();
 		}
 	}
 }

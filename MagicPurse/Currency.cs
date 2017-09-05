@@ -1,35 +1,35 @@
 ﻿namespace MagicPurse
 {
-	public class Money
+	public class Currency
 	{
 		public int Pound { get; private set; }
 		public int Pence { get; private set; }
 		public int Shilling { get; private set; }
 
-		public Money()
+		public Currency()
 		{
 		}
 
-		public Money(int pound, int shilling, int pence)
+		public Currency(int pound, int shilling, int pence)
 		{
 			this.Pound = pound;
 			this.Pence = pence;
 			this.Shilling = shilling;
 		}
 
-		public Money AddShiling(int amount)
+		public Currency AddShiling(int amount)
 		{
 			this.Shilling += amount;
 			return this;
 		}
 
-		public Money AddPence(int amount)
+		public Currency AddPence(int amount)
 		{
 			this.Pence += amount;
 			return this;
 		}
 
-		public Money AddPound(int amount)
+		public Currency AddPound(int amount)
 		{
 			this.Pound += amount;
 			return this;
