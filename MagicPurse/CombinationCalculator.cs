@@ -20,6 +20,7 @@ namespace MagicPurse
 		{
 			List<List<double>> result = new List<List<double>>();
 			this.RunAlgorithm(new List<double>(), 0, currency.GetTotalPence(), result);
+			var test = result.Count;
 			return result;
 		}
 

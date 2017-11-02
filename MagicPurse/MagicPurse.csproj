@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CombinationCalculatorDP.cs" />
+    <Compile Include="CombinationHackerRank.cs" />
     <Compile Include="DependencyResolution\ApplicationModule.cs" />
     <Compile Include="Factories\CurrencyFactory.cs" />
     <Compile Include="Interfaces\IApplication.cs" />
